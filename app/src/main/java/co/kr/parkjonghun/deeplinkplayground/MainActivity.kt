@@ -15,7 +15,6 @@ import co.kr.parkjonghun.deeplinkplayground.ui.theme.DeepLinkPlayGroundTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             DeepLinkPlayGroundTheme {
                 Column(modifier = Modifier.fillMaxSize()) {
