@@ -40,7 +40,7 @@ fun ScreenB(
 
             composable(
                 route = "app/screena/b/{id}",
-                deepLinks = listOf(navDeepLink { uriPattern = "https://www.example.com/{id}" }),
+                deepLinks = listOf(navDeepLink { uriPattern = "custom://example.com/{id}" }),
             ) { navBackStackEntry ->
                 val id = navBackStackEntry.arguments?.getString("id")
                     ?: throw IllegalStateException("ID not found.")
@@ -49,7 +49,7 @@ fun ScreenB(
 
             composable(
                 route = "app/screena/c",
-                deepLinks = listOf(navDeepLink { uriPattern = "https://www.example.com/" }),
+                deepLinks = listOf(navDeepLink { uriPattern = "custom://example.com/" }),
             ) {
                 ScreenBC()
             }
