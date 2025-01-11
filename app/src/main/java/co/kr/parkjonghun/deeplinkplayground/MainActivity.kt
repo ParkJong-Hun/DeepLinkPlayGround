@@ -3,13 +3,13 @@ package co.kr.parkjonghun.deeplinkplayground
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navDeepLink
 import co.kr.parkjonghun.deeplinkplayground.ui.theme.DeepLinkPlayGroundTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,18 +21,23 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     NavHost(
                         navController = navController,
-                        startDestination = "ScreenA"
+                        startDestination = "app/screena"
                     ) {
-                        composable("ScreenA") {
+                        composable("app/screena") {
                             ScreenA()
                         }
-                        composable("ScreenB") {
+                        composable(
+                            route = "app/screenb",
+//                            deepLinks = listOf(navDeepLink {
+//                                uriPattern = "https://www.example.com/*"
+//                            }),
+                        ) {
                             ScreenB()
                         }
-                        composable("ScreenC") {
+                        composable("app/screenc") {
                             ScreenC()
                         }
-                        composable("ScreenD") {
+                        composable("app/screend") {
                             ScreenD()
                         }
                     }
