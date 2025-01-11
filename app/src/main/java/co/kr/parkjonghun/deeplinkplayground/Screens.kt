@@ -16,38 +16,6 @@ fun ScreenA() {
 }
 
 @Composable
-fun ScreenB() {
-    val screenANavController = rememberNavController()
-
-    Column {
-        NavHost(
-            navController = screenANavController,
-            startDestination = "app/screena/a",
-        ) {
-            composable("app/screena/a") {
-                ScreenBA()
-            }
-
-            composable(
-                route = "app/screena/b/{id}",
-                deepLinks = listOf(navDeepLink { uriPattern = "custom://example.com/b/{id}" }),
-            ) { navBackStackEntry ->
-                val id = navBackStackEntry.arguments?.getString("id")
-                    ?: throw IllegalStateException("ID not found.")
-                ScreenBB(id)
-            }
-
-            composable(
-                route = "app/screena/c",
-                deepLinks = listOf(navDeepLink { uriPattern = "custom://example.com/b" }),
-            ) {
-                ScreenBC()
-            }
-        }
-    }
-}
-
-@Composable
 fun ScreenBA() {
     Text("ScreenBA")
 }
