@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
                         composable(
                             route = "app/screenb",
                             deepLinks = listOf(navDeepLink {
-                                uriPattern = "custom://example.com/*"
+                                uriPattern = "custom://example.com/{binfo}"
                             }),
                         ) {
                             ScreenB()

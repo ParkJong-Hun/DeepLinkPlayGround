@@ -1,10 +1,8 @@
 package co.kr.parkjonghun.deeplinkplayground
 
-import android.content.Intent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -18,16 +16,8 @@ fun ScreenA() {
 }
 
 @Composable
-fun ScreenB(
-    deepLinkIntent: Intent? = null,
-) {
+fun ScreenB() {
     val screenANavController = rememberNavController()
-
-    LaunchedEffect(deepLinkIntent) {
-        if (deepLinkIntent != null) {
-            screenANavController.handleDeepLink(deepLinkIntent)
-        }
-    }
 
     Column {
         NavHost(
@@ -40,7 +30,7 @@ fun ScreenB(
 
             composable(
                 route = "app/screena/b/{id}",
-                deepLinks = listOf(navDeepLink { uriPattern = "custom://example.com/{id}" }),
+                deepLinks = listOf(navDeepLink { uriPattern = "custom://example.com/b/{id}" }),
             ) { navBackStackEntry ->
                 val id = navBackStackEntry.arguments?.getString("id")
                     ?: throw IllegalStateException("ID not found.")
@@ -49,7 +39,7 @@ fun ScreenB(
 
             composable(
                 route = "app/screena/c",
-                deepLinks = listOf(navDeepLink { uriPattern = "custom://example.com/" }),
+                deepLinks = listOf(navDeepLink { uriPattern = "custom://example.com/b" }),
             ) {
                 ScreenBC()
             }
